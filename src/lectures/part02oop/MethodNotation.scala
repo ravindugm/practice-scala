@@ -2,16 +2,26 @@ package lectures.part02oop
 
 object MethodNotation extends App {
 
-  class Person(val name: String, favoriteMovie: String) {
+  class Person(val name: String, favoriteMovie: String, val age: Int = 0) {
     def likes(movie: String): Boolean = movie == favoriteMovie
 
     def +(person: Person): String = s"${this.name} is hanging out with ${person.name}"
 
+    def +(nickName: String): Person = new Person(s"$name ($nickName)", favoriteMovie)
+
     def unary_! : String = s"$name, what the heck?!"
+
+    def unary_+ : Person = new Person(name, favoriteMovie, age + 1)
 
     def isAlive: Boolean = true
 
     def apply(): String = s"Hi, My name is $name and I like $favoriteMovie"
+
+    def apply(watchTime: Int) = s"$name watched $favoriteMovie $watchTime times"
+
+    def learns(subject: String) = s"$name is leaning $subject"
+
+    def learnsScala = this learns "Scala"
   }
 
   val mary = new Person("Mary", "Titanic")
@@ -46,4 +56,27 @@ object MethodNotation extends App {
   // Apply
   println(mary.apply())
   println(mary()) // Equivalent
+
+  /*
+    1. Overload the + operator
+        mary + "the rockstar" => new person "Mary (the rockstar)"
+
+    2. Add an age to the Person class
+       Add a unary + operator => new person with the age + 1
+       +mary => mary with the age incrementer
+
+    3. Add a "learns" method in the Person class => "Mary learns Scala"
+       Add a learnScala method, calls learns method with "Scala"
+       Use it in postfix notation
+
+    4. Overload the apply method
+       mary.apply(2) => "Mary watched Inception 2 times"
+   */
+
+  println((mary + "The rockstar").apply())
+  println(+mary.age)
+  println(mary.learnsScala)
+  println(mary learns ("Scala"))
+  println(mary apply (3))
+  println(mary apply 2)
 }
