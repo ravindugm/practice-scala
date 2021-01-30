@@ -1,2 +1,2 @@
 # Scala Programming Practices
-- This repo is use for Scala coding practices.
+- This repo is used for Scala coding practices.
