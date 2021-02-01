@@ -46,7 +46,7 @@ object AnonymousClasses extends App {
     3. MyList
         - map(transformer) => MyList
         - filter(predicate) => MyList
-        - flatMap (transformer from A to MyList[B]) => MyList[B]
+        - flatMap(transformer from A to MyList[B]) => MyList[B]
 
        class EvenPredicate extends MyPredicate[Int]
        class StringToIntTransformer extends MyTransformer[String, Int]
