@@ -134,9 +134,11 @@ object ListTest extends App {
   println(listOfIntegers.toString)
   println(listOfStrings.toString)
 
-  println(listOfIntegers.map(new Function1[Int, Int] {
+  /*println(listOfIntegers.map(new Function1[Int, Int] {
     override def apply(elem: Int): Int = elem * 2
-  }).toString)
+  }).toString)*/
+
+  println(listOfIntegers.map(elem => elem * 2).toString)
 
   /*
     [1,2,3].filter(n % 2 == 0) =
@@ -145,14 +147,18 @@ object ListTest extends App {
        = new Cons(2, Empty.filter(n % 2 == 0))
        = new Cons(2, Empty)
    */
-  println(listOfIntegers.filter(new Function1[Int, Boolean] {
+  /*println(listOfIntegers.filter(new Function1[Int, Boolean] {
     override def apply(elem: Int): Boolean = elem % 2 == 0
-  }).toString)
+  }).toString)*/
+
+  println(listOfIntegers.filter(elem => elem % 2 == 0).toString)
 
   println((listOfIntegers ++ anotherListOfIntegers).toString)
-  println(listOfIntegers.flatMap(new Function1[Int, MyList[Int]] {
+  /*println(listOfIntegers.flatMap(new Function1[Int, MyList[Int]] {
     override def apply(elem: Int): MyList[Int] = new Cons[Int](elem, new Cons(elem + 1, Empty))
-  }).toString)
+  }).toString)*/
+
+  println(listOfIntegers.flatMap(elem => new Cons[Int](elem, new Cons(elem + 1, Empty))).toString)
 }
 
 /*
