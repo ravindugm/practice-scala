@@ -75,4 +75,8 @@ object Generics extends App {
      [-A] - Hell No!(Contravariant)
    */
 
+  /*
+    Generics can be use for Classes and Traits
+   */
+
 }
