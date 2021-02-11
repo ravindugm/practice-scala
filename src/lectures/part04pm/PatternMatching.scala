@@ -20,6 +20,7 @@ object PatternMatching extends App {
 
   // 1. Decompose values
   case class Person(name: String, age: Int)
+
   val bob = Person("Bob", 20)
 
   val greeting = bob match {
@@ -38,7 +39,9 @@ object PatternMatching extends App {
 
   // Pattern Matching on sealed hierarchies
   sealed class Animal
+
   case class Dog(breed: String) extends Animal
+
   case class Parrot(greeting: String) extends Animal
 
   val animal: Animal = Dog("Terra Nova")
@@ -68,8 +71,11 @@ object PatternMatching extends App {
    */
 
   trait Expression
+
   case class Number(n: Int) extends Expression
+
   case class Sum(e1: Expression, e2: Expression) extends Expression
+
   case class Prod(e1: Expression, e2: Expression) extends Expression
 
   def show(exp: Expression): String = exp match {
@@ -86,6 +92,7 @@ object PatternMatching extends App {
     }
 
   }
+
   println(show(Sum(Number(2), Number(3))))
   println(show(Sum(Sum(Number(2), Number(3)), Number(4))))
   println(show(Prod(Sum(Number(2), Number(1)), Number(3))))
